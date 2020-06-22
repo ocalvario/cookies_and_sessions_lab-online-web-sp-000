@@ -1,17 +1,11 @@
 class ProductsController < ApplicationController
-   def index
-   	@products = Product.all
-   end
+  def index
+  end
 
-# Routed from POST /items/:id/add_to_cart
-   def add
+  def add
+    session[:cart] << params[:product]
 
-     @product = Product.find(params[:id])
-  	 cart<< @product.id
-   
-    cart << params[:product]
-  
-   	render :index
-	end
+    redirect_to root_path
+  end
 
 end
